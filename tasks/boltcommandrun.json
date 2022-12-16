@@ -12,7 +12,7 @@
       "type": "String[1]"
     },
     "targets": {
-      "description": "The targets for the command",
+      "description": "The targets for the command; if left empty, assumes localhost",
       "type": "Optional[String[1]]"
     }
   }
