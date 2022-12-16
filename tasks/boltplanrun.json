@@ -4,7 +4,7 @@
   "description": "A short description of this task",
   "parameters": {
     "project_directory": {
-      "description": "The project directory where the bolt project exits",
+      "description": "The full directory location where the bolt project exits. Example: /opt/myproject",
       "type": "String[1]"
     },
     "plan": {
@@ -12,7 +12,7 @@
       "type": "String[1]"
     },
     "parameters": {
-      "description": "The parameters for the plan",
+      "description": "The parameters for the plan. Can either be string (message='this is some data') or file (@file) ",
       "type": "Optional[String[1]]"
     }
   }

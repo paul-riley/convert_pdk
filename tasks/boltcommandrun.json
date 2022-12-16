@@ -4,7 +4,7 @@
   "description": "A short description of this task",
   "parameters": {
     "project_directory": {
-      "description": "The full directory location where the bolt project exits",
+      "description": "The full directory location where the bolt project exits. Example: /opt/myproject",
       "type": "String[1]"
     },
     "command": {
