@@ -2,25 +2,48 @@
 
 # Puppet Task Name: boltplanrun
 #
-# This is where you put the shell code for your task.
-#
-#
+# Runs a Bolt plan on a remote target after validating inputs... Always validate!
 
+# PT_project_directory='/Users/<username>/projects/testproject'
+# PT_plan='testproject::echoplan'
+# PT_parameters='@json/message.json'
 
-
-
-if [ ! -z "$PT_targets"]
+if [[ ! -z "$PT_project_directory" ]];
 then 
-    targets = $PT_targets
+    project_directory=$PT_project_directory
 else
-    targets = 'localhost'
+    echo 'project_directory is unset'
+    exit 1
+fi
 
-if [ ! -z "$PT_parameters"]
+if [[ ! -z "$PT_plan" ]] && [[ "$PT_plan" == *"::"* ]];
 then 
-    parameters = $PT_parameters
-    paramstatus = true
+    plan=$PT_plan
 else
-    paramstatus = false
-end
+    echo 'plan is not set correctly'
+    exit 1
+fi
 
-if [ $paramstatus ]
+if [[ ! -z "$PT_parameters" ]] && [[ "$PT_parameters" == "@"* ]]; 
+then 
+    parameters=$PT_parameters
+    paramtype='file'
+elif [[ ! -z "$PT_parameters" ]];
+then
+    parameters=$PT_parameters
+    paramtype='string'
+fi
+
+
+cd $project_directory
+
+#Run Command
+if [[ "$parameters" ]] && [[ "$paramtype" == "file" ]];
+then
+    bolt plan run "$plan" --params $parameters
+elif [[ "$parameters" ]] && [[ "$paramtype" == "string" ]];
+then
+    bolt plan run "$plan" "$parameters"
+else
+    bolt plan run "$plan"
+fi

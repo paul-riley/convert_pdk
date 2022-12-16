@@ -2,14 +2,8 @@
 
 # Puppet Task Name: boltcommandrun
 #
-# This is where you put the shell code for your task.
 #
-
-#Test data
-##bolt command run @command/echolocal --targets localhost
-# PT_project_directory='/Users/paulriley/projects/testproject'
-# PT_command='@command/echolocal' 
-
+# Runs a Bolt command on a remote target after validating inputs... Always validate!
 
 if [[ ! -z "$PT_project_directory" ]];
 then 
@@ -34,33 +28,10 @@ else
     targets='localhost'
 fi
 
-#Setup pipe to write output && change dir
-
-# pipe=/tmp/testpipe
-
-# trap "rm -f $pipe" EXIT
-
-# if [[ ! -p $pipe ]];
-# then
-#     mkfifo $pipe
-# fi
 
 cd $project_directory
 
 #Run command
 
 bolt command run "$command" --targets $targets
-# /usr/local/bin/bolt command run "$command" --targets $targets >$pipe
-# echo 'quit'>>$pipe
 
-# #Echo output from pipe
-
-# while true
-# do
-#     if read line <$pipe; then
-#         if [[ "$line" == 'quit' ]]; then
-#             break
-#         fi
-#         echo $line
-#     fi
-# done

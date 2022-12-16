@@ -8,7 +8,7 @@
       "type": "String[1]"
     },
     "plan": {
-      "description": "The plan to run",
+      "description": "The plan to run, follows format project::plan",
       "type": "String[1]"
     },
     "parameters": {
