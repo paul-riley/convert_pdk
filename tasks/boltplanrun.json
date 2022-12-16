@@ -1,0 +1,19 @@
+{
+  "puppet_task_version": 1,
+  "supports_noop": false,
+  "description": "A short description of this task",
+  "parameters": {
+    "project_directory": {
+      "description": "The project directory where the bolt project exits",
+      "type": "String[1]"
+    },
+    "plan": {
+      "description": "The plan to run",
+      "type": "String[1]"
+    },
+    "parameters": {
+      "description": "The parameters for the plan",
+      "type": "Optional[String[1]]"
+    }
+  }
+}

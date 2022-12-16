@@ -1,0 +1,19 @@
+{
+  "puppet_task_version": 1,
+  "supports_noop": false,
+  "description": "A short description of this task",
+  "parameters": {
+    "project_directory": {
+      "description": "The full directory location where the bolt project exits",
+      "type": "String[1]"
+    },
+    "command": {
+      "description": "The command to run",
+      "type": "String[1]"
+    },
+    "targets": {
+      "description": "The targets for the command",
+      "type": "Optional[String[1]]"
+    }
+  }
+}
