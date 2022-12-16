@@ -7,15 +7,15 @@
 
 #Setup local vars
 
-if [ ! -z "$PT_project_directory"]
+if [[ ! -z "$PT_project_directory" ]];
 then 
     project_directory=$PT_project_directory
 else
-    echo "project_directory is unset"
+    echo 'project_directory is unset'
     exit 1
 fi
 
-if [ ! -z "$PT_command"]
+if [[ ! -z "$PT_command" ]];
 then 
     command=$PT_command
 else
@@ -23,7 +23,7 @@ else
     exit 1
 fi
 
-if [ ! -z "$PT_targets"]
+if [[ ! -z "$PT_targets" ]];
 then 
     targets=$PT_targets
 else
@@ -36,7 +36,8 @@ pipe=/tmp/testpipe
 
 trap "rm -f $pipe" EXIT
 
-if [[ ! -p $pipe ]]; then
+if [[ ! -p $pipe ]];
+then
     mkfifo $pipe
 fi
 
