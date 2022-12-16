@@ -4,9 +4,6 @@
 #
 # Runs a Bolt plan on a remote target after validating inputs... Always validate!
 
-# PT_project_directory='/Users/<username>/projects/testproject'
-# PT_plan='testproject::echoplan'
-# PT_parameters='@json/message.json'
 
 if [[ ! -z "$PT_project_directory" ]];
 then 
