@@ -5,7 +5,11 @@
 # This is where you put the shell code for your task.
 #
 
-#Setup local vars
+#Test data
+##bolt command run @command/echolocal --targets localhost
+# PT_project_directory='/Users/paulriley/projects/testproject'
+# PT_command='@command/echolocal' 
+
 
 if [[ ! -z "$PT_project_directory" ]];
 then 
@@ -32,30 +36,31 @@ fi
 
 #Setup pipe to write output && change dir
 
-pipe=/tmp/testpipe
+# pipe=/tmp/testpipe
 
-trap "rm -f $pipe" EXIT
+# trap "rm -f $pipe" EXIT
 
-if [[ ! -p $pipe ]];
-then
-    mkfifo $pipe
-fi
+# if [[ ! -p $pipe ]];
+# then
+#     mkfifo $pipe
+# fi
 
 cd $project_directory
 
 #Run command
 
-/usr/local/bin/bolt command run "$command" --targets $targets >>$pipe
-echo 'quit'>>$pipe
+bolt command run "$command" --targets $targets
+# /usr/local/bin/bolt command run "$command" --targets $targets >$pipe
+# echo 'quit'>>$pipe
 
-#Echo output from pipe
+# #Echo output from pipe
 
-while true
-do
-    if read line <$pipe; then
-        if [[ "$line" == 'quit' ]]; then
-            break
-        fi
-        echo $line
-    fi
-done
+# while true
+# do
+#     if read line <$pipe; then
+#         if [[ "$line" == 'quit' ]]; then
+#             break
+#         fi
+#         echo $line
+#     fi
+# done
