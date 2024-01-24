@@ -3,6 +3,6 @@
 # A description of what this class does
 #
 # @example
-#   include boltrunner
-class boltrunner {
+#   include convert_pdk
+class convert_pdk {
 }
